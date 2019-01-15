@@ -5,20 +5,20 @@ var MessagesView = {
   initialize: function() {
     this.$chats.html('');
     for (var i = 0; i < Messages.data.length; i++) {
-      if (this.validate(Messages.data[i])){
-        var $messageHTML = $(MessageView.render(Messages.data[i]));
-        $messageHTML.appendTo(this.$chats);        
-      }
+      MessagesView.renderMessage(Messages.data[i]);
     }
   },
 
-  render: function() {
-    
+  renderMessage: function(data) {
+    if (this.validate(data)){
+      var $messageHTML = $(MessageView.render(data));
+      $messageHTML.appendTo(this.$chats);        
+    }
   },
   
   validate: function(obj) {
     
-    if (!obj.objectId || !obj.username || !obj.text) {
+    if (!obj.username || !obj.text) {
       return false;
     }
     if (!obj.createdAt) {
@@ -33,24 +33,3 @@ var MessagesView = {
     return true;
   }
 };
-/*
-
-createdAt:
-"2019-01-15T00:08:52.885Z"
-
-objectId:
-"X4L8K19k5K"
-
-roomname:
-"MessagesFromTheTM"
-
-text:
-"How is the sprint going triple-aces?"
-
-updatedAt:
-"2019-01-15T00:08:52.885Z"
-
-username:
-"Nick"
-
-*/
