@@ -5,10 +5,10 @@ var RoomsView = {
   $input: $('#rooms input'),
 
   initialize: function() {
-    RoomsView.$button.on('click', RoomsView.addRoom.bind(RoomsView));
+    RoomsView.$button.on('click', RoomsView.renderRoom.bind(RoomsView));
   },
   
-  addRoom: function() {
+  renderRoom: function() {
     var roomText = this.$input.val();
     Rooms.data.push(roomText);
     this.$input.val('');
