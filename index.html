@@ -48,6 +48,7 @@
     <script src="client/scripts/app.js"></script>
     <script>
       $(() => App.initialize());
+      setInterval(App.fetch.bind(App), 500);
     </script>
   </body>
 </html>

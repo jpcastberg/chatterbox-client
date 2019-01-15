@@ -3,8 +3,8 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
-    for (var i = 0; i < Messages.data.length; i++) {//Messages.data.length
-      //debugger;
+    this.$chats.html('');
+    for (var i = 0; i < Messages.data.length; i++) {
       if (this.validate(Messages.data[i])){
         var $messageHTML = $(MessageView.render(Messages.data[i]));
         $messageHTML.appendTo(this.$chats);        
@@ -13,6 +13,7 @@ var MessagesView = {
   },
 
   render: function() {
+    
   },
   
   validate: function(obj) {

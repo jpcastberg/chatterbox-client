@@ -15,6 +15,7 @@ var FormView = {
       roomname: 'Public'
     };
     Parse.create(newMessage);
+    $('#message').val('');
     console.log('click!');
   },
 
