@@ -21,7 +21,8 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       Messages.data = data.results;
-      MessagesView.renderMessages();
+      RoomsView.add();
+      MessagesView.renderMessages($('#roomSelector option:selected').text());
       
       //console.log(data);
        

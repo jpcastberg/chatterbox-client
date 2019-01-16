@@ -12,7 +12,7 @@ var FormView = {
     var newMessage = {
       username: App.username,
       text: $('#message').val(),
-      roomname: 'Public'
+      roomname: $('#roomSelector option:selected').text()
     };
     Parse.create(newMessage);
     $('#message').val('');
@@ -25,3 +25,5 @@ var FormView = {
   }
 
 };
+
+//$( "#myselect option:selected" ).text()

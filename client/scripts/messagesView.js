@@ -9,10 +9,12 @@ var MessagesView = {
     });
   },
 
-  renderMessages: function(room) {
+  renderMessages: function(room = 'all') {
     this.$chats.html('');
     for (var i = 0; i < Messages.data.length; i++) {
-      MessagesView.renderMessage(Messages.data[i]);
+      if (Messages.data[i].roomname === room || room === 'all') {
+        MessagesView.renderMessage(Messages.data[i]);
+      }
     }
   },
 
@@ -23,7 +25,6 @@ var MessagesView = {
         $messageHTML.addClass('friend');
       }
       $messageHTML.appendTo(this.$chats);
-      RoomsView.renderRoom(data.roomname);
     }
   },
   

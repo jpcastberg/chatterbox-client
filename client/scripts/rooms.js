@@ -1,4 +1,4 @@
 var Rooms = {
-  data: []
+  data: ['all']
 
 };

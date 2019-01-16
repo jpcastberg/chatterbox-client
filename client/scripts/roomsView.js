@@ -31,6 +31,14 @@ var RoomsView = {
       RoomsView.$select.append(`<option>${text}</option>`);
     }
   },
+  
+  add: function () {
+    for (var i = 0; i < Messages.data.length; i++) {
+      RoomsView.renderRoom(Messages.data[i].roomname);
+    }
+  },
+  
+  
 
   render: _.template(`<div class="roomname"><%- roomname %></div>`)
   
