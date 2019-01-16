@@ -8,6 +8,7 @@ var App = {
     App.username = window.location.search.substr(10);
 
     FormView.initialize();
+    MessagesView.initialize();
     RoomsView.initialize();
 
     // Fetch initial batch of messages
@@ -20,7 +21,7 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       Messages.data = data.results;
-      MessagesView.initialize();
+      MessagesView.renderMessages();
       
       //console.log(data);
        

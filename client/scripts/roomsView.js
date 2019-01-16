@@ -5,18 +5,28 @@ var RoomsView = {
   $input: $('#rooms input'),
 
   initialize: function() {
+    // for (var i = 0; i < Rooms.data.length; i++) {
+    //   RoomsView.$select.children().each(function(element) {
+    //     if (!Rooms.data.includes($(element).text())) {
+    //       Rooms.data.push($(element).text());
+    //       //RoomsView.$select.append(`<option>${Rooms.data[i]}</option>`);
+    //     }
+    //   });
+    // }
     RoomsView.$button.on('click', RoomsView.renderRoom.bind(RoomsView));
   },
   
   renderRoom: function() {
-    var roomText = this.$input.val();
-    Rooms.data.push(roomText);
-    this.$input.val('');
-    $('#rooms select').append(`<option>${roomText}</option>`);
+    var roomText = RoomsView.$input.val().trim();
+    if (roomText.length) {
+      Rooms.data.push(roomText);
+      RoomsView.$input.val('');
+      $('#rooms select').append(`<option>${roomText}</option>`);
+    }
   },
 
-  render: function() {
-  }
+  render: _.template(`<div class="roomname"><%- roomname %></div>`)
+  
 
 };
 
