@@ -5,7 +5,7 @@ var MessagesView = {
   initialize: function() {
     MessagesView.$chats.on('click', '.username', function(event) {
       //debugger;
-      Friends.toggleFriend($(this).text());
+      Friends.toggleStatus($(this).text());
     });
   },
 
@@ -19,6 +19,9 @@ var MessagesView = {
   renderMessage: function(data) {
     if (this.validate(data)) {
       var $messageHTML = $(MessageView.render(data));
+      if (Friends.data.includes(data.username)) {
+        $messageHTML.addClass('friend');
+      }
       $messageHTML.appendTo(this.$chats);
       RoomsView.renderRoom(data.roomname);
     }
