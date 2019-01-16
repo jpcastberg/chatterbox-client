@@ -14,7 +14,7 @@ var RoomsView = {
     //   });
     // }
     RoomsView.$button.on('click', function () {
-      var text = RoomsView.$input.val().trim();
+      var text = RoomsView.$input.val();
       RoomsView.$input.val('');
       RoomsView.renderRoom(text);
     });
@@ -22,6 +22,10 @@ var RoomsView = {
   
   renderRoom: function(text) {
     //debugger;
+    if (!text) {
+      return;
+    }
+    text = text.trim();
     if (text.length && !Rooms.data.includes(text)) {
       Rooms.data.push(text);
       RoomsView.$select.append(`<option>${text}</option>`);
