@@ -4,6 +4,7 @@ var FormView = {
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    $('#username').text('Username: ' + App.username);
   },
 
   handleSubmit: function(event) {
@@ -14,9 +15,11 @@ var FormView = {
       text: $('#message').val(),
       roomname: $('#roomSelector option:selected').text()
     };
-    Parse.create(newMessage);
     $('#message').val('');
-    console.log('click!');
+    Parse.create(newMessage, function() {
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    });
   },
 
   setStatus: function(active) {

@@ -24,18 +24,21 @@
   <body>
     <div id="main">
       <h1>chatterbox</h1>
+      <h3 id="username"></h3>
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select id='roomSelector'><option>all</option></select>
-        
-        <input type="text" name="room"/>
-        <button>Add Room</button>
+        <select id='roomSelector'>
+          <option>ALL</option>
+          <option>Add New Room</option>
+        </select>
       </div>
       <form action="#" id="send" method="post">
         <input type="text" name="message" id="message"/>
         <input type="submit" name="submit" class="submit"/>
       </form>
+      <div>Click on a username to add them to your Friends List!</div>
+      <button id="refresh">Refresh Messages</button>
     </div>
     <div id="chats"></div>
     <script src="client/env/config.js"></script>
@@ -50,7 +53,6 @@
     <script src="client/scripts/app.js"></script>
     <script>
       $(() => App.initialize());
-      setInterval(App.fetch.bind(App), 500);
     </script>
   </body>
 </html>

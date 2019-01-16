@@ -1,18 +1,23 @@
 body {
     background: #eee;
+    background-image: url("https://wallpapersultra.net/wp-content/uploads/Amazing-Dope-Wallpapers-1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     text-align: center;
     padding: 0 25px;
     font-family: arial, sans-serif;
+    color: white;
 }
 
 #main, #chats {
     width: 500px;
     margin: auto;
     text-align: left;
-    background: white;
+    background: black;
     padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
+    opacity: 0.9;
 }
 
 #main h1 {
@@ -46,6 +51,17 @@ body {
     line-height: 13px;
 }
 
+#refresh {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 form {
     padding: 20px;
     padding-left: 0;
@@ -63,6 +79,9 @@ form input[type=text] {
     padding: 5px;
     margin-bottom: 5px;
     background-color: #eee;
+    opacity: 1 !important;
+    color: black;
+    overflow: auto;
 }
 
 .chat .username {
@@ -85,7 +104,11 @@ form input[type=text] {
 }
 
 .friend {
-    color: #fff;
+    color: #000;
+    background-color: #0090da;
+}
+
+.friend:hover {
     background-color: #0090da;
 }
 

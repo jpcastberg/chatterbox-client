@@ -18,6 +18,25 @@ var RoomsView = {
       RoomsView.$input.val('');
       RoomsView.renderRoom(text);
     });
+    
+    RoomsView.$select.on('change', function() {
+      if ($('#roomSelector option:selected').text() === 'Add New Room') {
+        var newRoom = prompt('Please enter a name for your room.');
+        if (newRoom) {
+          alert('Room created! Entering Your new room now...');
+          RoomsView.renderRoom(newRoom);
+          $('#roomSelector').val(newRoom);
+          App.startSpinner();
+          App.fetch(App.stopSpinner);
+        } else {
+          $('#roomSelector').val('ALL');
+          App.startSpinner();
+          App.fetch(App.stopSpinner);
+        }
+      } else {
+        MessagesView.renderMessages($('#roomSelector option:selected').text());
+      }
+    });
   },
   
   renderRoom: function(text) {

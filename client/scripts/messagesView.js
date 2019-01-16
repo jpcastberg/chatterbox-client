@@ -7,14 +7,21 @@ var MessagesView = {
       //debugger;
       Friends.toggleStatus($(this).text());
     });
+    $('#refresh').on('click', function() {
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    });
   },
 
-  renderMessages: function(room = 'all') {
+  renderMessages: function(room = 'ALL') {
     this.$chats.html('');
     for (var i = 0; i < Messages.data.length; i++) {
-      if (Messages.data[i].roomname === room || room === 'all') {
+      if (Messages.data[i].roomname === room || room === 'ALL') {
         MessagesView.renderMessage(Messages.data[i]);
       }
+    }
+    if (this.$chats.children().length === 0) {
+      this.$chats.text('This room is lonely! Add a new message to warm it up.');
     }
   },
 
@@ -45,21 +52,3 @@ var MessagesView = {
     return true;
   }
 };
-
-  // initialize: function() {
-  //   this.$chats.html('');
-  //   for (var i = 0; i < Messages.data.length; i++) {
-  //     MessagesView.renderMessage(Messages.data[i]);
-  //   }
-  // },
-
-  // renderMessage: function(data) {
-  //   if (this.validate(data)) {
-  //     var $messageHTML = $(MessageView.render(data));
-  //     $messageHTML.appendTo(this.$chats);
-  //     if (!Rooms.data.includes(data.roomname)) {
-  //       Rooms.data.push(data.roomname);
-  //       RoomsView.$select.append(`<option>${data.roomname}</option>`);
-  //     }
-  //   }
-  // },
