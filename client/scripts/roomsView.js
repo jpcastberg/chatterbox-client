@@ -13,15 +13,18 @@ var RoomsView = {
     //     }
     //   });
     // }
-    RoomsView.$button.on('click', RoomsView.renderRoom.bind(RoomsView));
+    RoomsView.$button.on('click', function () {
+      var text = RoomsView.$input.val().trim();
+      RoomsView.$input.val('');
+      RoomsView.renderRoom(text);
+    });
   },
   
-  renderRoom: function() {
-    var roomText = RoomsView.$input.val().trim();
-    if (roomText.length) {
-      Rooms.data.push(roomText);
-      RoomsView.$input.val('');
-      $('#rooms select').append(`<option>${roomText}</option>`);
+  renderRoom: function(text) {
+    //debugger;
+    if (text.length && !Rooms.data.includes(text)) {
+      Rooms.data.push(text);
+      RoomsView.$select.append(`<option>${text}</option>`);
     }
   },
 

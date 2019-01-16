@@ -3,7 +3,10 @@ var MessagesView = {
   $chats: $('#chats'),
   
   initialize: function() {
-    
+    MessagesView.$chats.on('click', '.username', function(event) {
+      //debugger;
+      Friends.toggleFriend($(this).text());
+    });
   },
 
   renderMessages: function(room) {
@@ -17,10 +20,7 @@ var MessagesView = {
     if (this.validate(data)) {
       var $messageHTML = $(MessageView.render(data));
       $messageHTML.appendTo(this.$chats);
-      if (!Rooms.data.includes(data.roomname)) {
-        Rooms.data.push(data.roomname);
-        RoomsView.$select.append(`<option>${data.roomname}</option>`);
-      }
+      RoomsView.renderRoom(data.roomname);
     }
   },
   
