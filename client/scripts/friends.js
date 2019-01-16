@@ -8,7 +8,8 @@ var Friends = {
     } else {
       Friends.data.push(name);
     }
-    MessagesView.renderMessages($('#roomSelector option:selected').text());
+    if (Messages.data) {
+      MessagesView.renderMessages($('#roomSelector option:selected').text());
+    }
   }
-
 };
